@@ -12,18 +12,20 @@ api_hash = env.str("API_HASH")
 phone = env.str("PHONE")
 login = "A"
 
-channel_link = -1001725812090
+channel_link = [1501243765]
 
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 
 
-@bot.on_message(filters.chat(chats=channel_link))
-async def echo(client: Client, message: Message):
-    if message.from_user is None:
-        await message.reply(text="О, привет )")
-    else:
-        print(f"ID: {message.from_user.id}")
+# @bot.on_message(filters.chat(chats=channel_link))
+# async def echo(client: Client, message: Message):
+#     if message.from_user is None:
+#         await message.reply(text="О, привет )")
+#     else:
+#         print(f"ID: {message.from_user.id}")
+
+
 
 
 asyncio.run(bot.run())
