@@ -11,13 +11,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from environs import Env
+from pyrogram import Client, filters
+from pyrogram.types import Message
+from environs import Env
+import asyncio
+
 
 env = Env()
 env.read_env()
 API_TOKEN = env.str("TOKEN")
 
+api_id = env.str("API_ID")
+api_hash = env.str("API_HASH")
+phone = env.str("PHONE")
+login = "A"
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
+channel_link = [-1002149382751]
+
+user_bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
+
 dp.middleware.setup(LoggingMiddleware())
 
 
@@ -71,5 +84,18 @@ async def download_reel(message: types.Message):
         await bot.delete_message(chat_id=message.chat.id, message_id=ans.message_id)
 
 
-if __name__ == '__main__':
+@user_bot.on_message(filters.chat(chats=channel_link))
+async def echo(client: Client, message: Message):
+    if message.from_user is None:
+        await message.reply(text="О, привет )")
+    else:
+        print(f"ID: {message.from_user.id}")
+
+
+def main():
+    user_bot.run()
     executor.start_polling(dp, skip_updates=True)
+
+
+if __name__ == '__main__':
+    main()
