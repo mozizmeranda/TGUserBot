@@ -12,7 +12,7 @@ api_hash = env.str("API_HASH")
 phone = env.str("PHONE")
 login = "A"
 
-channel_link = env.int("CHANNEL_LINK")
+channel_link = [-1002149382751, -1001679621700]
 
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
@@ -21,7 +21,7 @@ bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 @bot.on_message(filters.chat(chats=channel_link))
 async def echo(client: Client, message: Message):
     if message.from_user is None:
-        await message.reply(text="Мдауш")
+        await message.reply(text="Люди в шоке")
 
 
 asyncio.run(bot.run())
