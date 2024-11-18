@@ -12,7 +12,7 @@ api_hash = env.str("API_HASH")
 phone = env.str("PHONE")
 login = "A"
 
-channel_link = env.int("CHANNEL_LINK")
+channel_link = -1001725812090
 
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
