@@ -10,7 +10,7 @@ env.read_env()
 api_id = env.str("API_ID")
 api_hash = env.str("API_HASH")
 phone = env.str("PHONE")
-login = "Umar"
+login = "A"
 
 channel_link = "-1002683245680"
 
