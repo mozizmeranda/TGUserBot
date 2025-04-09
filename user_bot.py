@@ -18,7 +18,7 @@ channel_link = "-1002683245680"
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 
 
-@bot.on_message(filters.chat(chats=-1002683245680))
+@bot.on_message(filters.chat(chats=-1001725812090))
 async def echo(client: Client, message: Message):
     if message.from_user is None:
         await message.reply(text="Люди в шоке")
