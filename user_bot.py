@@ -18,11 +18,19 @@ channel_link = "-1002683245680"
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 
 
+# @bot.on_message(filters.chat(chats=-1001725812090))
+# async def echo(client: Client, message: Message):
+#     if message.from_user is None:
+#         print("CALL")
+#         await bot.send_message(chat_id=6287458105, text="Comment was written")
+#         await message.reply(text="Люди в шоке")
+
 @bot.on_message(filters.chat(chats=-1001725812090))
 async def echo(client: Client, message: Message):
-    if message.from_user is None:
-        await bot.send_message(chat_id=6287458105, text="Comment was written")
-        await message.reply(text="Люди в шоке")
+    print(f"[ECHO] Chat ID: {message.chat.id}, Message: {message.text}")
+    await bot.send_message(chat_id=6287458105, text="Comment was written")
+    # await message.reply(text="Люди в шоке")
+
 
 @bot.on_message(filters.chat(chats=6287458105))
 async def e(client: Client, message: Message):
