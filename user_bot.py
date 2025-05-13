@@ -12,7 +12,7 @@ api_hash = env.str("API_HASH")
 phone = env.str("PHONE")
 login = "A"
 
-channel_link = "-1002683245680"
+channel_link = env.int("CHANNEL_LINK")
 
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
@@ -25,11 +25,9 @@ bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 #         await bot.send_message(chat_id=6287458105, text="Comment was written")
 #         await message.reply(text="Люди в шоке")
 
-@bot.on_message(filters.chat(chats=-1001725812090))
+@bot.on_message(filters.chat(chats=channel_link))
 async def echo(client: Client, message: Message):
-    print(f"[ECHO] Chat ID: {message.chat.id}, Message: {message.text}")
-    await bot.send_message(chat_id=6287458105, text="Comment was written")
-    # await message.reply(text="Люди в шоке")
+    await message.reply(text="Люди в шоке")
 
 
 @bot.on_message(filters.chat(chats=6287458105))
