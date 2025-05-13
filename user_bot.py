@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from environs import Env
 import asyncio
+import time
 
 
 env = Env()
@@ -13,6 +14,7 @@ phone = env.str("PHONE")
 login = "A"
 
 channel_link = env.int("CHANNEL_LINK")
+lst = [-1002683245680, -1001725812090, 6287458105, -1001861451231, -1001679717174]
 
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
@@ -25,15 +27,15 @@ bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 #         await bot.send_message(chat_id=6287458105, text="Comment was written")
 #         await message.reply(text="Люди в шоке")
 
-@bot.on_message(filters.chat(chats=channel_link))
+@bot.on_message(filters.chat(chats=lst))
 async def echo(client: Client, message: Message):
     await message.reply(text="Люди в шоке")
 
 
-@bot.on_message(filters.chat(chats=6287458105))
-async def e(client: Client, message: Message):
-    if message.text == "1":
-        await message.reply(text="Fuck you!!")
+# @bot.on_message(filters.chat(chats=lst))
+# async def e(client: Client, message: Message):
+#     if message.text == "1":
+#         await message.reply(text="Fuck you!!")
 
 asyncio.run(bot.run())
 # if __name__ == "__main__":
