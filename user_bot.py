@@ -14,7 +14,7 @@ phone = env.str("PHONE")
 login = "A"
 
 channel_link = env.int("CHANNEL_LINK")
-lst = [-1002683245680, -1001725812090, 6287458105, -1001861451231, -1001679717174]
+lst = [-1002683245680, -1001725812090, 6287458105, -1001861451231]
 
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
