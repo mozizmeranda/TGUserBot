@@ -16,9 +16,8 @@ word = env.str("WORD")
 channel_link = env.list("CHANNEL_LINK")
 channel_link = list(map(int, env.list("CHANNEL_LINK")))
 print(channel_link)
+secs = env.int("SECS")
 # lst = [-1002683245680, -1001725812090, 6287458105, -1001861451231]
-
-
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 
 
@@ -32,8 +31,15 @@ bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 @bot.on_message(filters.chat(chats=channel_link))
 async def echo(client: Client, message: Message):
     if message.from_user is None:
+        time.sleep(secs)
         await message.reply(text=word)
 
+
+# async def main():
+#     # await bot.start()
+#     # await bot.send_message(chat_id=-1001725812090, text="Ожидаемо")
+#     # await bot.send_message(chat_id=6287458105, text="Ожидаемо !!!!!!!!!")
+#     await bot.run()
 
 # @bot.on_message(filters.chat(chats=lst))
 # async def e(client: Client, message: Message):
@@ -42,6 +48,7 @@ async def echo(client: Client, message: Message):
 
 asyncio.run(bot.run())
 # if __name__ == "__main__":
-#     asyncio.run(bot.run())
-#     bot.send_message(chat_id=6287458105, text="Bot has started working.")
+    # asyncio.run(main())
+    # asyncio.create_task(main())
+    # bot.send_message(chat_id=-1001725812090, text="Ожидаемо")
 
