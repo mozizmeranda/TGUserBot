@@ -12,7 +12,7 @@ api_id = env.str("API_ID")
 api_hash = env.str("API_HASH")
 phone = env.str("PHONE")
 login = "A"
-
+word = env.str("WORD")
 channel_link = env.list("CHANNEL_LINK")
 channel_link = list(map(int, env.list("CHANNEL_LINK")))
 print(channel_link)
@@ -32,7 +32,7 @@ bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 @bot.on_message(filters.chat(chats=channel_link))
 async def echo(client: Client, message: Message):
     if message.from_user is None:
-        await message.reply(text="Люди в шоке")
+        await message.reply(text=word)
 
 
 # @bot.on_message(filters.chat(chats=lst))
